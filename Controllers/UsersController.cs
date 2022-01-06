@@ -1,9 +1,9 @@
+namespace jtw_token.Controllers;
+
+using jtw_token.Helpers;
 using jtw_token.Models;
 using jtw_token.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-namespace jtw_token.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -28,7 +28,8 @@ public class UsersController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("getAll")]
+    // [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet]
     public IActionResult GetAll()
     {
         return Ok(_userService.GetAll());
